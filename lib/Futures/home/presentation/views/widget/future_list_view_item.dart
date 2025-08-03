@@ -29,7 +29,7 @@ class FutureListViewItem extends StatelessWidget {
           WidgetsBinding.instance.addPostFrameCallback((_) {
             showSnakBar(context, message: state.errMessage);
           });
-          return const SizedBox.shrink(); // لازم ترجّع Widget
+          return const SizedBox.shrink(); 
         } else {
           return const Center(child: CircularProgressIndicator());
         }
