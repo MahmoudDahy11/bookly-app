@@ -18,9 +18,9 @@ class FutureListViewItem extends StatelessWidget {
               itemCount: 10,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                return const Padding(
+                return  Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8.0),
-                  child: CardItem(),
+                  child: CardItem(imageurl: state.books[index].,),
                 );
               },
             ),

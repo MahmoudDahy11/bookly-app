@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CardItem extends StatelessWidget {
-  const CardItem({super.key});
+  const CardItem({super.key, required this.imageurl});
+
+  final String imageurl;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +15,7 @@ class CardItem extends StatelessWidget {
           color: Colors.red,
         ),
         clipBehavior: Clip.antiAlias,
-        child: Image.asset('assets/images/test2.png', fit: BoxFit.fill),
+        child: Image.network(imageurl, fit: BoxFit.fill),
       ),
     );
   }
