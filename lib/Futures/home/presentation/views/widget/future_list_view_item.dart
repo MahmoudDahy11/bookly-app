@@ -1,5 +1,5 @@
 import 'package:bookly_app/Futures/home/presentation/manger/future_books_cubit/future_book_cubit.dart';
-import 'package:bookly_app/Futures/home/presentation/views/widget/custom_book_image.dart';
+import 'package:bookly_app/Futures/home/presentation/views/widget/card_item.dart';
 import 'package:bookly_app/core/widget/custom_error_message.dart';
 import 'package:bookly_app/core/widget/custom_loading_indicator.dart';
 import 'package:flutter/material.dart';
@@ -16,12 +16,12 @@ class FutureListViewItem extends StatelessWidget {
           return SizedBox(
             height: MediaQuery.of(context).size.height * .3,
             child: ListView.builder(
-              itemCount: 10,
+              itemCount: state.books.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8.0),
-                  child: CustomBookImage(
+                  child: CardItem(
                     imageUrl:
                         state.books[index].volumeInfo.imageLinks.thumbnail,
                   ),
