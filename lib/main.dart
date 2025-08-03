@@ -4,10 +4,17 @@ import 'package:bookly_app/Futures/home/presentation/manger/newest_books_cubit/n
 import 'package:bookly_app/constant.dart';
 import 'package:bookly_app/core/utils/app_router.dart';
 import 'package:bookly_app/core/utils/service_locator.dart';
+import 'package:fast_cached_network_image/fast_cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await FastCachedImageConfig.init(
+    subDir: 'fastCachedImages',
+    clearCacheAfter: const Duration(days: 15),
+  );
   setup();
   runApp(const Bookly());
 }

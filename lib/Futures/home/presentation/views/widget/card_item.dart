@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class CardItem extends StatelessWidget {
@@ -7,15 +8,15 @@ class CardItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: .6,
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(32),
-          color: Colors.red,
+    return ClipRRect(
+      borderRadius: BorderRadiusGeometry.circular(32),
+      child: AspectRatio(
+        aspectRatio: .6,
+        child: CachedNetworkImage(
+          imageUrl: imageUrl,
+          fit: BoxFit.fill,
+          errorWidget: (context, url, error) => Icon(Icons.error, size: 70),
         ),
-        clipBehavior: Clip.antiAlias,
-        child: Image.network(imageUrl, fit: BoxFit.fill),
       ),
     );
   }
