@@ -1,6 +1,7 @@
 import 'package:bookly_app/Futures/home/presentation/manger/future_books_cubit/future_book_cubit.dart';
 import 'package:bookly_app/Futures/home/presentation/views/widget/custom_book_image.dart';
 import 'package:bookly_app/core/widget/custom_error_message.dart';
+import 'package:bookly_app/core/widget/custom_loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -31,7 +32,7 @@ class FutureListViewItem extends StatelessWidget {
         } else if (state is FutureBookFailure) {
           return CustomErrorMessage(errMessage: state.errMessage);
         } else {
-          return const Center(child: CircularProgressIndicator());
+          return CustomLoadingIndicator();
         }
       },
     );
