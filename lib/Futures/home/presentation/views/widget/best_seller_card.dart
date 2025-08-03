@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class BestSellerCard extends StatelessWidget {
-  const BestSellerCard({super.key});
-
+  const BestSellerCard({super.key, required this.imageUrl});
+  final String imageUrl;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,7 +20,7 @@ class BestSellerCard extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
-              child: Image.asset(
+              child: Image.network(
                 'assets/images/test3.png',
                 height: 130,
                 width: 80,
