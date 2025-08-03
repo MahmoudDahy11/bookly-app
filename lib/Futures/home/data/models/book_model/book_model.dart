@@ -3,11 +3,7 @@ class BookModel {
   final String etag;
   final VolumeInfo volumeInfo;
 
-  BookModel({
-    required this.id,
-    required this.etag,
-    required this.volumeInfo,
-  });
+  BookModel({required this.id, required this.etag, required this.volumeInfo});
 
   factory BookModel.fromJson(Map<String, dynamic> json) {
     return BookModel(
@@ -18,10 +14,10 @@ class BookModel {
   }
 
   Map<String, dynamic> toJson() => {
-        'id': id,
-        'etag': etag,
-        'volumeInfo': volumeInfo.toJson(),
-      };
+    'id': id,
+    'etag': etag,
+    'volumeInfo': volumeInfo.toJson(),
+  };
 }
 
 class VolumeInfo {
@@ -54,7 +50,8 @@ class VolumeInfo {
       publisher: json['publisher'] ?? '',
       publishedDate: json['publishedDate'] ?? '',
       description: json['description'] ?? '',
-      industryIdentifiers: (json['industryIdentifiers'] as List<dynamic>?)
+      industryIdentifiers:
+          (json['industryIdentifiers'] as List<dynamic>?)
               ?.map((e) => IndustryIdentifier.fromJson(e))
               .toList() ??
           [],
@@ -65,27 +62,23 @@ class VolumeInfo {
   }
 
   Map<String, dynamic> toJson() => {
-        'title': title,
-        'authors': authors,
-        'publisher': publisher,
-        'publishedDate': publishedDate,
-        'description': description,
-        'industryIdentifiers':
-            industryIdentifiers.map((e) => e.toJson()).toList(),
-        'pageCount': pageCount,
-        'language': language,
-        'imageLinks': imageLinks.toJson(),
-      };
+    'title': title,
+    'authors': authors,
+    'publisher': publisher,
+    'publishedDate': publishedDate,
+    'description': description,
+    'industryIdentifiers': industryIdentifiers.map((e) => e.toJson()).toList(),
+    'pageCount': pageCount,
+    'language': language,
+    'imageLinks': imageLinks.toJson(),
+  };
 }
 
 class IndustryIdentifier {
   final String type;
   final String identifier;
 
-  IndustryIdentifier({
-    required this.type,
-    required this.identifier,
-  });
+  IndustryIdentifier({required this.type, required this.identifier});
 
   factory IndustryIdentifier.fromJson(Map<String, dynamic> json) {
     return IndustryIdentifier(
@@ -94,20 +87,14 @@ class IndustryIdentifier {
     );
   }
 
-  Map<String, dynamic> toJson() => {
-        'type': type,
-        'identifier': identifier,
-      };
+  Map<String, dynamic> toJson() => {'type': type, 'identifier': identifier};
 }
 
 class ImageLinks {
   final String smallThumbnail;
   final String thumbnail;
 
-  ImageLinks({
-    required this.smallThumbnail,
-    required this.thumbnail,
-  });
+  ImageLinks({required this.smallThumbnail, required this.thumbnail});
 
   factory ImageLinks.fromJson(Map<String, dynamic> json) {
     return ImageLinks(
@@ -117,7 +104,7 @@ class ImageLinks {
   }
 
   Map<String, dynamic> toJson() => {
-        'smallThumbnail': smallThumbnail,
-        'thumbnail': thumbnail,
-      };
+    'smallThumbnail': smallThumbnail,
+    'thumbnail': thumbnail,
+  };
 }

@@ -8,13 +8,14 @@ import 'package:dio/dio.dart';
 class HomeRepoImplement implements HomeRepo {
   final ApiService apiService = ApiService();
   final String sorting = 'newest';
-  final String category = 'programming';
+  final String categoryFutureBooks = 'programming';
+  final String categoryNewestBooks = 'science';
   @override
   Future<Either<Failures, List<BookModel>>> fetchNewestBooks() async {
     try {
       var data = await apiService.get(
         url:
-            'https://www.googleapis.com/books/v1/volumes?sorting=$sorting&q=$category',
+            'https://www.googleapis.com/books/v1/volumes?sorting=$sorting&q=$categoryNewestBooks',
       );
       List<BookModel> books = [];
       for (var item in data['items']) {
@@ -34,7 +35,7 @@ class HomeRepoImplement implements HomeRepo {
     try {
       var data = await apiService.get(
         url:
-            'https://www.googleapis.com/books/v1/volumes?sorting=$sorting&q=$category',
+            'https://www.googleapis.com/books/v1/volumes?sorting=$sorting&q=$categoryFutureBooks',
       );
       List<BookModel> books = [];
       for (var item in data['items']) {
