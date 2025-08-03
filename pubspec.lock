@@ -336,14 +336,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.5"
-  relateddigital_flutter:
-    dependency: "direct main"
-    description:
-      name: relateddigital_flutter
-      sha256: "608e37c8e2888893b835c7fab2b47f37192ea88054897e0ab672ce88b228463e"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.6.4"
   sky_engine:
     dependency: transitive
     description: flutter
