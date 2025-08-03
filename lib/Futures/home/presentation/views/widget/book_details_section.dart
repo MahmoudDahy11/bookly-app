@@ -1,4 +1,3 @@
-
 import 'package:bookly_app/Futures/home/presentation/views/widget/custom_book_image.dart';
 import 'package:bookly_app/constant.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +9,10 @@ class BookDetailsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CustomBookImage(),
+        CustomBookImage(
+          imageUrl:
+              'http://books.google.com/books/content?id=4MlcEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+        ),
         const SizedBox(height: 20),
         const Text(
           maxLines: 2,

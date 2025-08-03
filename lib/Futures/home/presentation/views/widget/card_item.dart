@@ -1,9 +1,8 @@
+import 'package:bookly_app/Futures/home/presentation/views/widget/custom_book_image.dart';
 import 'package:flutter/material.dart';
 
 class CardItem extends StatelessWidget {
-  const CardItem({super.key, required this.imageurl});
-
-  final String imageurl;
+  const CardItem({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +14,10 @@ class CardItem extends StatelessWidget {
           color: Colors.red,
         ),
         clipBehavior: Clip.antiAlias,
-        child: Image.network(imageurl, fit: BoxFit.fill),
+        child: CustomBookImage(
+          imageUrl:
+              'http://books.google.com/books/content?id=4MlcEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+        ),
       ),
     );
   }

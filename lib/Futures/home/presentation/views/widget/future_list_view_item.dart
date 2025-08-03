@@ -1,6 +1,6 @@
 import 'package:bookly_app/Futures/home/presentation/manger/future_books_cubit/future_book_cubit.dart';
-import 'package:bookly_app/Futures/home/presentation/views/widget/card_item.dart';
-import 'package:bookly_app/constant.dart';
+import 'package:bookly_app/Futures/home/presentation/views/widget/custom_book_image.dart';
+import 'package:bookly_app/core/widget/custom_error_message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,18 +18,18 @@ class FutureListViewItem extends StatelessWidget {
               itemCount: 10,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                return  Padding(
+                return Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8.0),
-                  child: CardItem(imageurl: state.books[index].,),
+                  child: CustomBookImage(
+                    imageUrl:
+                        state.books[index].volumeInfo.imageLinks.thumbnail,
+                  ),
                 );
               },
             ),
           );
         } else if (state is FutureBookFailure) {
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            showSnakBar(context, message: state.errMessage);
-          });
-          return const SizedBox.shrink(); 
+          return CustomErrorMessage(errMessage: state.errMessage);
         } else {
           return const Center(child: CircularProgressIndicator());
         }

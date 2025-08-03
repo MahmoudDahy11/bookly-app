@@ -1,3 +1,4 @@
+import 'package:bookly_app/Futures/home/presentation/views/widget/custom_book_image.dart';
 import 'package:flutter/material.dart';
 
 class SimlarBooksListView extends StatelessWidget {
@@ -18,7 +19,10 @@ class SimlarBooksListView extends StatelessWidget {
             margin: EdgeInsets.symmetric(horizontal: 8),
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),
             clipBehavior: Clip.antiAlias,
-            child: Image.asset('assets/images/test2.png', fit: BoxFit.cover),
+            child: CustomBookImage(
+              imageUrl:
+                  'http://books.google.com/books/content?id=4MlcEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+            ),
           );
         },
       ),
