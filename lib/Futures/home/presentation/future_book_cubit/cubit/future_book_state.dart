@@ -13,6 +13,7 @@ final class FutureBookFailure extends FutureBookState {
   FutureBookFailure(this.errMessage);
 }
 
+// ignore: must_be_immutable
 final class FutureBookSuccess extends FutureBookState {
   List<BookModel> books;
   FutureBookSuccess(this.books);
