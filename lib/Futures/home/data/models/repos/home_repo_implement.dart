@@ -8,14 +8,15 @@ import 'package:dio/dio.dart';
 class HomeRepoImplement implements HomeRepo {
   final ApiService apiService = ApiService();
   final String sorting = 'newest';
-  final String categoryFutureBooks = 'science';
+  final String sortingSimilar = 'relevance';
+  final String categoryFutureBooks = 'computer science';
   final String categoryNewestBooks = 'programming';
   @override
   Future<Either<Failures, List<BookModel>>> fetchNewestBooks() async {
     try {
       var data = await apiService.get(
         url:
-            'https://www.googleapis.com/books/v1/volumes?sorting=$sorting&q=$categoryNewestBooks',
+            'https://www.googleapis.com/books/v1/volumes?sorting=$sorting&q=$categoryFutureBooks',
       );
       List<BookModel> books = [];
       for (var item in data['items']) {
@@ -32,6 +33,28 @@ class HomeRepoImplement implements HomeRepo {
 
   @override
   Future<Either<Failures, List<BookModel>>> fetchFutureBooks() async {
+    try {
+      var data = await apiService.get(
+        url:
+            'https://www.googleapis.com/books/v1/volumes?sorting=$sortingSimilar&q=$categoryNewestBooks',
+      );
+      List<BookModel> books = [];
+      for (var item in data['items']) {
+        books.add(BookModel.fromJson(item));
+      }
+      return right(books);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      }
+      return left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failures, List<BookModel>>> fetchSimilarBooks({
+    required String Category,
+  }) async {
     try {
       var data = await apiService.get(
         url:

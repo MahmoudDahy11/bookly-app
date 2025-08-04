@@ -5,12 +5,14 @@ class CustomErrorMessage extends StatelessWidget {
   final String errMessage;
   @override
   Widget build(BuildContext context) {
-    return Text(
-      errMessage,
-      style: TextStyle(
-        fontSize: 18,
-        fontWeight: FontWeight.bold,
-        fontFamily: 'PlayfairDisplay',
+    return Center(
+      child: Text(
+        errMessage,
+        style: TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+          fontFamily: 'PlayfairDisplay',
+        ),
       ),
     );
   }
