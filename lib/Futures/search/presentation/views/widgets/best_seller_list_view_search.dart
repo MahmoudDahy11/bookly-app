@@ -12,10 +12,10 @@ class BestSellerListViewSearch extends StatelessWidget {
       itemBuilder: (context, index) {
         return const Padding(
           padding: EdgeInsets.only(bottom: 32),
-          child: BestSellerCard(
-            imageUrl:
-                'http://books.google.com/books/content?id=4MlcEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
-          ),
+          // child: BestSellerCard(
+          //   bookModel:
+          //       'http://books.google.com/books/content?id=4MlcEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+          // ),
         );
       },
     );

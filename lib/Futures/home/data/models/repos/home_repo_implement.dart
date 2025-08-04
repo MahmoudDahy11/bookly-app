@@ -15,7 +15,7 @@ class HomeRepoImplement implements HomeRepo {
     try {
       var data = await apiService.get(
         url:
-            'https://www.googleapis.com/books/v1/volumes?sorting=$sorting&q=$categoryNewestBooks',
+            'https://www.googleapis.com/books/v1/volumes?sorting=$sorting&q=$categoryFutureBooks',
       );
       List<BookModel> books = [];
       for (var item in data['items']) {

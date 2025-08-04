@@ -30,6 +30,8 @@ class VolumeInfo {
   final int pageCount;
   final String language;
   final ImageLinks imageLinks;
+  final double averageRating;
+  final int ratingsCount;
 
   VolumeInfo({
     required this.title,
@@ -41,10 +43,17 @@ class VolumeInfo {
     required this.pageCount,
     required this.language,
     required this.imageLinks,
+    required this.averageRating,
+    required this.ratingsCount,
   });
 
   factory VolumeInfo.fromJson(Map<String, dynamic> json) {
     return VolumeInfo(
+      averageRating: (json['averageRating'] != null)
+          ? (json['averageRating'] as num).toDouble()
+          : 0.0,
+      ratingsCount: json['ratingsCount'] ?? 0,
+
       title: json['title'] ?? '',
       authors: List<String>.from(json['authors'] ?? []),
       publisher: json['publisher'] ?? '',

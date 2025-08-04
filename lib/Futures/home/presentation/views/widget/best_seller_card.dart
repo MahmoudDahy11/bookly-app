@@ -1,3 +1,4 @@
+import 'package:bookly_app/Futures/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/Futures/home/presentation/views/widget/book_rating.dart';
 import 'package:bookly_app/constant.dart';
 import 'package:bookly_app/core/utils/app_router.dart';
@@ -6,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class BestSellerCard extends StatelessWidget {
-  const BestSellerCard({super.key, required this.imageUrl});
-  final String imageUrl;
+  const BestSellerCard({super.key, required this.bookModel});
+  final BookModel bookModel;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class BestSellerCard extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: CachedNetworkImage(
-                imageUrl: imageUrl,
+                imageUrl: bookModel.volumeInfo.imageLinks.thumbnail,
                 errorWidget: (context, url, error) => const Icon(Icons.error),
                 fit: BoxFit.fill,
                 width: screenWidth * 0.25,
@@ -37,9 +38,9 @@ class BestSellerCard extends StatelessWidget {
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children: [
                   Text(
-                    "Harry Potter and the Goblet of Fire",
+                    bookModel.volumeInfo.title,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
@@ -52,14 +53,16 @@ class BestSellerCard extends StatelessWidget {
                   ),
                   SizedBox(height: 8),
                   Text(
-                    "J.K. Rowling",
+                    bookModel.volumeInfo.authors.isNotEmpty
+                        ? bookModel.volumeInfo.authors[0]
+                        : 'Unknown Author',
                     style: TextStyle(
                       color: Color.fromARGB(255, 224, 216, 216),
                       fontSize: 16,
                     ),
                   ),
                   SizedBox(height: 12),
-                  BookRating(),
+                  BookRating(rating: bookModel.volumeInfo.averageRating, count: bookModel.volumeInfo.ratingsCount,),
                 ],
               ),
             ),

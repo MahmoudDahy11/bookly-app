@@ -21,9 +21,7 @@ class BestSellerListView extends StatelessWidget {
             itemBuilder: (context, index) {
               return Padding(
                 padding: EdgeInsets.only(bottom: 32),
-                child: BestSellerCard(
-                  imageUrl: state.books[index].volumeInfo.imageLinks.thumbnail,
-                ),
+                child: BestSellerCard(bookModel: state.books[index]),
               );
             },
           );
