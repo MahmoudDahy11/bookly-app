@@ -33,8 +33,9 @@ class VolumeInfo {
   final double averageRating;
   final int ratingsCount;
   final List<String> categories;
-
+  final String? previewLink;
   VolumeInfo({
+    required this.previewLink,
     required this.title,
     required this.authors,
     required this.publisher,
@@ -51,6 +52,7 @@ class VolumeInfo {
 
   factory VolumeInfo.fromJson(Map<String, dynamic> json) {
     return VolumeInfo(
+      previewLink: json['previewLink'],
       averageRating: (json['averageRating'] != null)
           ? (json['averageRating'] as num).toDouble()
           : 0.0,

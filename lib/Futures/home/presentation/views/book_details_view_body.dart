@@ -4,6 +4,7 @@ import 'package:bookly_app/Futures/home/presentation/views/widget/books_botton_a
 import 'package:bookly_app/Futures/home/presentation/views/widget/custom_book_details_app_bar.dart';
 import 'package:bookly_app/Futures/home/presentation/views/widget/simlar_books_list_view.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
   const BookDetailsViewBody({super.key, required this.bookModel});
@@ -21,11 +22,23 @@ class BookDetailsViewBody extends StatelessWidget {
                 child: CustomBookDetailsAppBar(),
               ),
               const SizedBox(height: 30),
-              BookDetailsSection(bookModel: bookModel,),
+              BookDetailsSection(bookModel: bookModel),
               const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30.0),
-                child: BooksBottonAction(),
+                child: BooksBottonAction(
+                  onPressed: () async {
+                    Uri url = Uri.parse(bookModel.volumeInfo.previewLink!);
+                    if (await canLaunchUrl(url)) {
+                      await launchUrl(
+                        url,
+                        mode: LaunchMode.externalApplication,
+                      );
+                    } else {
+                      throw 'Could not launch $url';
+                    }
+                  },
+                ),
               ),
 
               const Expanded(child: SizedBox(height: 50)),

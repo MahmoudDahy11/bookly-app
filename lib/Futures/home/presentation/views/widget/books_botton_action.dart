@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class BooksBottonAction extends StatelessWidget {
-  const BooksBottonAction({super.key});
-
+  const BooksBottonAction({super.key, required this.onPressed} );
+ final void Function() onPressed;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -15,7 +15,7 @@ class BooksBottonAction extends StatelessWidget {
               child: SizedBox(
                 height: 50,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: (){},
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.black,
                     backgroundColor: Colors.white,
@@ -34,7 +34,7 @@ class BooksBottonAction extends StatelessWidget {
               child: SizedBox(
                 height: 50,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: onPressed,
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
                     backgroundColor: const Color(0xffD3703E),
