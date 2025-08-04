@@ -23,10 +23,10 @@ class BooksBottonAction extends StatelessWidget {
                     shape: const RoundedRectangleBorder(),
                     textStyle: const TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 24,
+                      fontSize: 20,
                     ),
                   ),
-                  child: const Text('19.99€'),
+                  child: const Text('Free'),
                 ),
               ),
             ),

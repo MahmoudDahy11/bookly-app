@@ -1,4 +1,3 @@
-import 'package:bookly_app/Futures/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/Futures/home/presentation/views/widget/best_seller_card.dart';
 import 'package:bookly_app/Futures/search/presentation/manger/search_cubit/serch_cubit.dart';
 import 'package:bookly_app/core/widget/custom_error_message.dart';
