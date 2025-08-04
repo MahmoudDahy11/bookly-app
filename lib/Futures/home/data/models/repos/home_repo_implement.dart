@@ -72,4 +72,24 @@ class HomeRepoImplement implements HomeRepo {
       return left(ServerFailure(e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failures, List<BookModel>>> fetchSearchBooks() async {
+    try {
+      var data = await apiService.get(
+        url:
+            'https://www.googleapis.com/books/v1/volumes?sorting=$sorting&q=$categoryNewestBooks',
+      );
+      List<BookModel> books = [];
+      for (var item in data['items']) {
+        books.add(BookModel.fromJson(item));
+      }
+      return right(books);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      }
+      return left(ServerFailure(e.toString()));
+    }
+  }
 }

@@ -17,6 +17,7 @@ class SimlarBooksListView extends StatelessWidget {
             // height: 170,
             height: MediaQuery.of(context).size.height * .17,
             child: ListView.builder(
+              physics: BouncingScrollPhysics(),
               padding: EdgeInsets.zero,
               scrollDirection: Axis.horizontal,
               itemCount: 10,

@@ -1,9 +1,11 @@
 import 'package:bookly_app/Futures/home/presentation/manger/future_books_cubit/future_book_cubit.dart';
 import 'package:bookly_app/Futures/home/presentation/views/widget/card_item.dart';
+import 'package:bookly_app/core/utils/app_router.dart';
 import 'package:bookly_app/core/widget/custom_error_message.dart';
 import 'package:bookly_app/core/widget/custom_loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class FutureListViewItem extends StatelessWidget {
   const FutureListViewItem({super.key});
@@ -22,9 +24,17 @@ class FutureListViewItem extends StatelessWidget {
               itemBuilder: (context, index) {
                 return Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8.0),
-                  child: CardItem(
-                    imageUrl:
-                        state.books[index].volumeInfo.imageLinks.thumbnail,
+                  child: GestureDetector(
+                    onTap: () {
+                      GoRouter.of(context).push(
+                        AppRouter.kBookdetailsView,
+                        extra: state.books[index],
+                      );
+                    },
+                    child: CardItem(
+                      imageUrl:
+                          state.books[index].volumeInfo.imageLinks.thumbnail,
+                    ),
                   ),
                 );
               },

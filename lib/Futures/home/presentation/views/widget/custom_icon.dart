@@ -11,6 +11,7 @@ class CustomIcon extends StatelessWidget {
     return ElevatedButton(
       onPressed: () {
         GoRouter.of(context).push(AppRouter.ksearchView);
+        
       },
       style: ElevatedButton.styleFrom(
         padding: EdgeInsets.all(0),

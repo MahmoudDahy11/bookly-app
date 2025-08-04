@@ -13,28 +13,29 @@ class BookDetailsSection extends StatelessWidget {
       children: [
         CustomBookImage(imageUrl: bookModel.volumeInfo.imageLinks.thumbnail),
         const SizedBox(height: 20),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 60.0),
-          child: Text(
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-            bookModel.volumeInfo.title,
-            style: TextStyle(
-              fontFamily: kFontFamily,
-              fontSize: 24,
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              height: 1.3,
-            ),
+        Text(
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+          bookModel.volumeInfo.title,
+          style: TextStyle(
+            fontFamily: kFontFamily,
+            fontSize: 24,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            height: 1.3,
           ),
+          textAlign: TextAlign.center,
         ),
         const SizedBox(height: 8),
         Text(
-          bookModel.volumeInfo.authors[0],
+          bookModel.volumeInfo.authors.isNotEmpty
+              ? bookModel.volumeInfo.authors[0]
+              : 'No Author',
           style: TextStyle(
             color: Color.fromARGB(255, 224, 216, 216),
             fontSize: 18,
           ),
+          textAlign: TextAlign.center,
         ),
         const SizedBox(height: 5),
         Row(
