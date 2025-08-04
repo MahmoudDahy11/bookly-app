@@ -19,7 +19,9 @@ class BestSellerCard extends StatelessWidget {
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),
       child: GestureDetector(
         onTap: () {
-          GoRouter.of(context).push(AppRouter.kBookdetailsView);
+          GoRouter.of(
+            context,
+          ).push(AppRouter.kBookdetailsView, extra: bookModel);
         },
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,7 +64,10 @@ class BestSellerCard extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 12),
-                  BookRating(rating: bookModel.volumeInfo.averageRating, count: bookModel.volumeInfo.ratingsCount,),
+                  BookRating(
+                    rating: bookModel.volumeInfo.averageRating,
+                    count: bookModel.volumeInfo.ratingsCount,
+                  ),
                 ],
               ),
             ),

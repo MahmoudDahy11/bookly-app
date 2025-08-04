@@ -32,6 +32,7 @@ class VolumeInfo {
   final ImageLinks imageLinks;
   final double averageRating;
   final int ratingsCount;
+  final List<String> categories;
 
   VolumeInfo({
     required this.title,
@@ -45,6 +46,7 @@ class VolumeInfo {
     required this.imageLinks,
     required this.averageRating,
     required this.ratingsCount,
+    required this.categories,
   });
 
   factory VolumeInfo.fromJson(Map<String, dynamic> json) {
@@ -67,6 +69,7 @@ class VolumeInfo {
       pageCount: json['pageCount'] ?? 0,
       language: json['language'] ?? '',
       imageLinks: ImageLinks.fromJson(json['imageLinks'] ?? {}),
+      categories: (json['categories'] as List?)?.cast<String>() ?? [],
     );
   }
 
@@ -80,6 +83,7 @@ class VolumeInfo {
     'pageCount': pageCount,
     'language': language,
     'imageLinks': imageLinks.toJson(),
+    'categories': categories,
   };
 }
 
