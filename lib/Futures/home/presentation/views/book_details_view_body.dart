@@ -1,3 +1,4 @@
+import 'package:bookly_app/Futures/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/Futures/home/presentation/views/widget/book_details_section.dart';
 import 'package:bookly_app/Futures/home/presentation/views/widget/books_botton_action.dart';
 import 'package:bookly_app/Futures/home/presentation/views/widget/custom_book_details_app_bar.dart';
@@ -5,8 +6,8 @@ import 'package:bookly_app/Futures/home/presentation/views/widget/simlar_books_l
 import 'package:flutter/material.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
-  const BookDetailsViewBody({super.key});
-
+  const BookDetailsViewBody({super.key, required this.bookModel});
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -20,7 +21,7 @@ class BookDetailsViewBody extends StatelessWidget {
                 child: CustomBookDetailsAppBar(),
               ),
               const SizedBox(height: 30),
-              BookDetailsSection(),
+              BookDetailsSection(bookModel: bookModel,),
               const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30.0),

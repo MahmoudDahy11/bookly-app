@@ -23,14 +23,14 @@ class SimlarBooksListView extends StatelessWidget {
               itemBuilder: (context, index) {
                 return Container(
                   width: 120,
-                  margin: EdgeInsets.symmetric(horizontal: 8),
+                  margin: const EdgeInsets.symmetric(horizontal: 8),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16),
                   ),
                   clipBehavior: Clip.antiAlias,
                   child: CustomBookImage(
                     imageUrl:
-                        'http://books.google.com/books/content?id=4MlcEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+                        state.books[index].volumeInfo.imageLinks.thumbnail,
                   ),
                 );
               },

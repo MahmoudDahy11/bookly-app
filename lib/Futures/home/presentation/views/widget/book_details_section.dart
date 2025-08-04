@@ -1,34 +1,36 @@
+import 'package:bookly_app/Futures/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/Futures/home/presentation/views/widget/custom_book_image.dart';
 import 'package:bookly_app/constant.dart';
 import 'package:flutter/material.dart';
 
 class BookDetailsSection extends StatelessWidget {
-  const BookDetailsSection({super.key});
-
+  const BookDetailsSection({super.key, required this.bookModel});
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        CustomBookImage(
-          imageUrl:
-              'http://books.google.com/books/content?id=4MlcEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
-        ),
+        CustomBookImage(imageUrl: bookModel.volumeInfo.imageLinks.thumbnail),
         const SizedBox(height: 20),
-        const Text(
-          maxLines: 2,
-          overflow: TextOverflow.ellipsis,
-          "The Jungle Book",
-          style: TextStyle(
-            fontFamily: kFontFamily,
-            fontSize: 24,
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            height: 1.3,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 60.0),
+          child: Text(
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            bookModel.volumeInfo.title,
+            style: TextStyle(
+              fontFamily: kFontFamily,
+              fontSize: 24,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              height: 1.3,
+            ),
           ),
         ),
         const SizedBox(height: 8),
-        const Text(
-          "J.K. Rowling",
+        Text(
+          bookModel.volumeInfo.authors[0],
           style: TextStyle(
             color: Color.fromARGB(255, 224, 216, 216),
             fontSize: 18,
@@ -40,9 +42,15 @@ class BookDetailsSection extends StatelessWidget {
           children: [
             Icon(Icons.star, color: Colors.amber, size: 30),
             SizedBox(width: 4),
-            Text("4.8", style: TextStyle(color: Colors.white, fontSize: 20)),
+            Text(
+              bookModel.volumeInfo.averageRating.toString(),
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
             SizedBox(width: 4),
-            Text("(2390)", style: TextStyle(color: Colors.grey, fontSize: 16)),
+            Text(
+              "(${bookModel.volumeInfo.ratingsCount})",
+              style: TextStyle(color: Colors.grey, fontSize: 16),
+            ),
           ],
         ),
       ],
